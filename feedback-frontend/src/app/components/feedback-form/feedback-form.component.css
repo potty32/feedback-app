@@ -1,0 +1,132 @@
+.formular-container {
+  background: #f5f7fc;
+  border: 1px solid #dde2ec;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.formular-titel {
+  font-size: 1.2rem;
+  color: #003399;
+  margin: 0 0 1.25rem;
+}
+
+.feld-gruppe {
+  margin-bottom: 1.1rem;
+}
+
+.feld-label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 0.35rem;
+}
+
+.feld-input,
+.feld-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid #aab2c8;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: border-color 0.2s;
+  background: #fff;
+}
+
+.feld-input:focus,
+.feld-textarea:focus {
+  outline: none;
+  border-color: #003399;
+  box-shadow: 0 0 0 3px rgba(0, 51, 153, 0.12);
+}
+
+.feld-fehler {
+  border-color: #cc0000 !important;
+}
+
+.feld-fehler-rand {
+  outline: 2px solid #cc0000;
+  border-radius: 4px;
+}
+
+.fehler-hinweis {
+  display: block;
+  color: #cc0000;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+.feld-fuss {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  min-height: 1.2rem;
+  margin-top: 0.25rem;
+}
+
+.zeichen-zaehler {
+  font-size: 0.78rem;
+  color: #888;
+  margin-left: auto;
+}
+
+/* Sterne-Auswahl */
+.stern-auswahl {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px 2px;
+  border-radius: 4px;
+}
+
+.stern-btn {
+  font-size: 2rem;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.15s, transform 0.1s;
+  user-select: none;
+  line-height: 1;
+}
+
+.stern-btn.aktiv {
+  color: #f5a623;
+}
+
+.stern-btn:hover {
+  transform: scale(1.15);
+}
+
+/* Fehler-Banner */
+.fehler-banner {
+  background-color: #ffe0e0;
+  border: 1px solid #cc0000;
+  color: #cc0000;
+  padding: 0.65rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Senden-Button */
+.senden-btn {
+  background-color: #003399;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.6rem 1.4rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.senden-btn:hover:not(:disabled) {
+  background-color: #002277;
+}
+
+.senden-btn:disabled {
+  background-color: #7a90c4;
+  cursor: not-allowed;
+}

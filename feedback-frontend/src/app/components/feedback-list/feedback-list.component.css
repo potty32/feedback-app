@@ -1,0 +1,87 @@
+.feedback-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: Arial, sans-serif;
+}
+
+.feedback-titel {
+  font-size: 1.75rem;
+  color: #003399;
+  margin-bottom: 1.5rem;
+}
+
+.fehler-banner {
+  background-color: #ffe0e0;
+  border: 1px solid #cc0000;
+  color: #cc0000;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.kein-feedback {
+  color: #666;
+  font-style: italic;
+}
+
+.feedback-karte {
+  background: #ffffff;
+  border: 1px solid #dde2ec;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.karte-kopf {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.kundennummer {
+  font-weight: bold;
+  color: #003399;
+  font-size: 0.95rem;
+}
+
+.sterne {
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+}
+
+.stern.gefuellt {
+  color: #f5a623;
+}
+
+.stern.leer {
+  color: #cccccc;
+}
+
+.kommentar {
+  color: #333333;
+  line-height: 1.5;
+  margin: 0 0 1rem;
+}
+
+.karte-fuss {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.loeschen-btn {
+  background-color: #cc0000;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background-color 0.2s;
+}
+
+.loeschen-btn:hover {
+  background-color: #990000;
+}

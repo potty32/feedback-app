@@ -1,0 +1,67 @@
+<div class="formular-container">
+  <h3 class="formular-titel">Neues Feedback erfassen</h3>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+
+    <div class="feld-gruppe">
+      <label class="feld-label" for="kundennummer">Kundennummer</label>
+      <input
+        id="kundennummer"
+        type="text"
+        class="feld-input"
+        [class.feld-fehler]="istUngueltig('kundennummer')"
+        formControlName="kundennummer"
+        placeholder="z. B. K-12345"
+      />
+      <span class="fehler-hinweis" *ngIf="istUngueltig('kundennummer')">
+        Bitte eine gültige Kundennummer eingeben (Format: K-12345).
+      </span>
+    </div>
+
+    <div class="feld-gruppe">
+      <label class="feld-label">Bewertung</label>
+      <div class="stern-auswahl" [class.feld-fehler-rand]="istUngueltig('sterneBewertung')">
+        <span
+          *ngFor="let s of sterneOptionen"
+          class="stern-btn"
+          [class.aktiv]="s <= (hoveredStern || form.get('sterneBewertung')!.value)"
+          (mouseenter)="hoveredStern = s"
+          (mouseleave)="hoveredStern = 0"
+          (click)="sternSetzen(s)"
+          role="button"
+          [attr.aria-label]="s + ' Stern'"
+        >&#9733;</span>
+      </div>
+      <span class="fehler-hinweis" *ngIf="istUngueltig('sterneBewertung')">
+        Bitte eine Bewertung auswählen.
+      </span>
+    </div>
+
+    <div class="feld-gruppe">
+      <label class="feld-label" for="kommentar">Kommentar</label>
+      <textarea
+        id="kommentar"
+        class="feld-textarea"
+        [class.feld-fehler]="istUngueltig('kommentar')"
+        formControlName="kommentar"
+        rows="4"
+        placeholder="Ihr Kommentar (max. 1000 Zeichen)..."
+      ></textarea>
+      <div class="feld-fuss">
+        <span class="fehler-hinweis" *ngIf="istUngueltig('kommentar')">
+          Bitte einen Kommentar eingeben.
+        </span>
+        <span class="zeichen-zaehler">
+          {{ form.get('kommentar')!.value?.length || 0 }} / 1000
+        </span>
+      </div>
+    </div>
+
+    <div *ngIf="fehlerMeldung" class="fehler-banner">{{ fehlerMeldung }}</div>
+
+    <button type="submit" class="senden-btn" [disabled]="sendenLaeuft">
+      {{ sendenLaeuft ? 'Wird gespeichert…' : 'Feedback absenden' }}
+    </button>
+
+  </form>
+</div>

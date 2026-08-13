@@ -1,0 +1,33 @@
+<div class="feedback-container">
+  <h2 class="feedback-titel">Kundenfeedbacks</h2>
+
+  <app-feedback-form (feedbackErstellt)="feedbackLaden()"></app-feedback-form>
+
+  <div *ngIf="fehlerMeldung" class="fehler-banner">
+    {{ fehlerMeldung }}
+  </div>
+
+  <div *ngIf="feedbacks.length === 0 && !fehlerMeldung" class="kein-feedback">
+    Noch keine Feedbacks vorhanden.
+  </div>
+
+  <div class="feedback-karte" *ngFor="let feedback of feedbacks">
+    <div class="karte-kopf">
+      <span class="kundennummer">Kunden-Nr: {{ feedback.kundennummer }}</span>
+      <span class="sterne">
+        <span
+          *ngFor="let stern of sterneArray(feedback.sterneBewertung)"
+          class="stern gefuellt">&#9733;</span>
+        <span
+          *ngFor="let stern of sterneArray(5 - feedback.sterneBewertung)"
+          class="stern leer">&#9734;</span>
+      </span>
+    </div>
+    <p class="kommentar">{{ feedback.kommentar }}</p>
+    <div class="karte-fuss">
+      <button class="loeschen-btn" (click)="feedbackLoeschen(feedback.id)">
+        Löschen
+      </button>
+    </div>
+  </div>
+</div>

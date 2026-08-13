@@ -1,0 +1,8 @@
+feedback-backend/target/
+feedback-frontend/node_modules/
+feedback-frontend/dist/
+feedback-frontend/.angular/cache/
+*.class
+*.jar
+core.*
+.claude/
