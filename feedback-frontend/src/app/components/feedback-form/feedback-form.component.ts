@@ -50,8 +50,8 @@ export class FeedbackFormComponent {
         this.sendenLaeuft = false;
         this.feedbackErstellt.emit();
       },
-      error: () => {
-        this.fehlerMeldung = 'Feedback konnte nicht gespeichert werden.';
+      error: (err) => {
+        this.fehlerMeldung = `Feedback konnte nicht gespeichert werden. [${err.status} ${err.statusText}] ${JSON.stringify(err.error)}`;
         this.sendenLaeuft = false;
       }
     });

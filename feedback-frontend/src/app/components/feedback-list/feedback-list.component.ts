@@ -28,8 +28,8 @@ export class FeedbackListComponent implements OnInit {
         this.feedbacks = daten;
         this.fehlerMeldung = null;
       },
-      error: () => {
-        this.fehlerMeldung = 'Feedbacks konnten nicht geladen werden.';
+      error: (err) => {
+        this.fehlerMeldung = `Feedbacks konnten nicht geladen werden. [${err.status} ${err.statusText}] ${JSON.stringify(err.error)}`;
       }
     });
   }
