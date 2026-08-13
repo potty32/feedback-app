@@ -19,5 +19,10 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ValidationFehlerAntwort(fehler));
     }
 
+    @ExceptionHandler(IllegalStateException.class)
+    public ResponseEntity<ValidationFehlerAntwort> handleIllegalState(IllegalStateException ex) {
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(new ValidationFehlerAntwort(List.of(ex.getMessage())));
+    }
+
     record ValidationFehlerAntwort(List<String> fehler) {}
 }

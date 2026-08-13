@@ -35,6 +35,10 @@ public class FeedbackService {
     }
 
     public FeedbackDto feedbackSpeichern(FeedbackDto dto) {
+        if (!feedbackRepository.findByKundennummer(dto.getKundennummer()).isEmpty()) {
+            throw new IllegalStateException(
+                "Für Kundennummer " + dto.getKundennummer() + " existiert bereits ein Feedback.");
+        }
         Feedback gespeichert = feedbackRepository.save(toEntity(dto));
         return toDto(gespeichert);
     }
