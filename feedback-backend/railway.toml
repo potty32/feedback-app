@@ -1,0 +1,10 @@
+[build]
+buildCommand = "mvn package -DskipTests"
+
+[deploy]
+startCommand = "java -jar target/feedback-backend-1.0.0-SNAPSHOT.jar"
+
+[variables]
+SPRING_DATASOURCE_URL = "jdbc:postgresql://${{Postgres.PGHOST}}:${{Postgres.PGPORT}}/${{Postgres.PGDATABASE}}"
+SPRING_DATASOURCE_USERNAME = "${{Postgres.PGUSER}}"
+SPRING_DATASOURCE_PASSWORD = "${{Postgres.PGPASSWORD}}"
