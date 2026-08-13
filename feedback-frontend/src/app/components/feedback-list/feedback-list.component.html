@@ -7,11 +7,37 @@
     {{ fehlerMeldung }}
   </div>
 
-  <div *ngIf="feedbacks.length === 0 && !fehlerMeldung" class="kein-feedback">
+  <div class="statistik-bereich" *ngIf="feedbacks.length > 0">
+    <div class="statistik-kopf">
+      <span class="statistik-titel">Bewertungsübersicht</span>
+      <span class="gesamt">{{ feedbacks.length }} Bewertungen gesamt</span>
+    </div>
+    <div
+      class="statistik-zeile"
+      *ngFor="let stat of sternStatistik"
+      [class.aktiv]="aktiverFilter === stat.sterne"
+      (click)="filterToggle(stat.sterne)">
+      <span class="zeile-sterne">
+        <span *ngFor="let s of sterneArray(stat.sterne)" class="stern gefuellt">&#9733;</span>
+        <span *ngFor="let s of sterneArray(5 - stat.sterne)" class="stern leer">&#9734;</span>
+      </span>
+      <div class="balken-hintergrund">
+        <div class="balken" [style.width]="balkenBreite(stat.anzahl)"></div>
+      </div>
+      <span class="zeile-anzahl">{{ stat.anzahl }}</span>
+    </div>
+  </div>
+
+  <div class="filter-hinweis" *ngIf="aktiverFilter !== null">
+    <span>Gefiltert: {{ aktiverFilter }} Stern{{ aktiverFilter === 1 ? '' : 'e' }} ({{ gefilterteFeedbacks.length }} Einträge)</span>
+    <button class="filter-reset" (click)="filterToggle(aktiverFilter!)">Filter aufheben</button>
+  </div>
+
+  <div *ngIf="gefilterteFeedbacks.length === 0 && !fehlerMeldung" class="kein-feedback">
     Noch keine Feedbacks vorhanden.
   </div>
 
-  <div class="feedback-karte" *ngFor="let feedback of feedbacks">
+  <div class="feedback-karte" *ngFor="let feedback of gefilterteFeedbacks">
     <div class="karte-kopf">
       <span class="kundennummer">Kunden-Nr: {{ feedback.kundennummer }}</span>
       <span class="sterne">

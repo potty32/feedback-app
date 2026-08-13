@@ -15,6 +15,7 @@ export class FeedbackListComponent implements OnInit {
 
   feedbacks: Feedback[] = [];
   fehlerMeldung: string | null = null;
+  aktiverFilter: number | null = null;
 
   constructor(private feedbackService: FeedbackService) {}
 
@@ -41,6 +42,27 @@ export class FeedbackListComponent implements OnInit {
         this.fehlerMeldung = 'Feedback konnte nicht gelöscht werden.';
       }
     });
+  }
+
+  get sternStatistik(): { sterne: number; anzahl: number }[] {
+    return [5, 4, 3, 2, 1].map(sterne => ({
+      sterne,
+      anzahl: this.feedbacks.filter(f => f.sterneBewertung === sterne).length
+    }));
+  }
+
+  get gefilterteFeedbacks(): Feedback[] {
+    if (this.aktiverFilter === null) return this.feedbacks;
+    return this.feedbacks.filter(f => f.sterneBewertung === this.aktiverFilter);
+  }
+
+  filterToggle(sterne: number): void {
+    this.aktiverFilter = this.aktiverFilter === sterne ? null : sterne;
+  }
+
+  balkenBreite(anzahl: number): string {
+    const max = Math.max(...this.sternStatistik.map(s => s.anzahl), 1);
+    return `${(anzahl / max) * 100}%`;
   }
 
   sterneArray(bewertung: number): number[] {
