@@ -2,7 +2,7 @@
 buildCommand = "mvn package -DskipTests"
 
 [deploy]
-startCommand = "java -jar target/feedback-backend-1.0.0-SNAPSHOT.jar"
+startCommand = "java -Dserver.port=$PORT -jar target/feedback-backend-1.0.0-SNAPSHOT.jar"
 
 [variables]
 SPRING_DATASOURCE_URL = "jdbc:postgresql://${{Postgres.PGHOST}}:${{Postgres.PGPORT}}/${{Postgres.PGDATABASE}}"
