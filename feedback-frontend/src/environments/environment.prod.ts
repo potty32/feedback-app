@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'BACKEND_URL_PLACEHOLDER/api/v1/feedbacks'
+  apiUrl: 'https://feedback-app-production-bd89.up.railway.app/api/v1/feedbacks'
 };
